@@ -1,9 +1,9 @@
 <script setup>
-import card from '../components/card.vue'
+import Main from '../components/Main.vue'
 </script>
 
 <template>
   <main>
-    <card />
+    <Main/>
   </main>
 </template>

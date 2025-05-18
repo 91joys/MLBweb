@@ -13,7 +13,7 @@
     		<b class="site-title">MLB 道奇資訊網</b>
     		<div class="site-intro">給台灣人的MLB資訊網，讓球迷可以跟上國際棒球時事</div>
 		</div>
-		<RouterLink to="/main" class="enter-button">
+		<RouterLink to="/card" class="enter-button">
 			<div class="button-content">
 					<img class="icon" alt="Baseballman Icon" src="@/assets/images/baseballman.svg" />
 					<b class="button-text">點選進入</b>

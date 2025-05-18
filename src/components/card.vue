@@ -1,40 +1,74 @@
-<script setup></script>
+<script setup>
+defineProps({
+  Player_Name: {
+    type: String,
+  },
+  English_Name: {
+    type: String,
+  },
+  Social_Link: {
+    type: String,
+  },
+  Nickname: {
+    type: String,
+  },
+  Number: {
+    type: String,
+  },
+  Position: {
+    type: String,
+  },
+  Image_URL: {
+    type: String,
+  },
+  Birthday: {
+    type: String,
+  },
+  Nationality: {
+    type: String,
+  },
+  MLB_Debut: {
+    type: String,
+  },
+  Dodgers_Debut: {
+    type: String,
+  },
+  Achievements: {
+    type: Array,
+  },
+})
+</script>
 <template>
   	<div class="player-card">
         <div class="card-background" />
         <header class="player-header">
-    		<b class="player-name">大谷翔平</b>
-    		<div class="player-english-name">(Shohei Ohtani)</div>
-            <a href="#" class="social-link">
+    		<b class="player-name" v-if="Player_Name">{{Player_Name}}</b>
+    		<div class="player-english-name" v-if="English_Name">{{ English_Name }}</div>
+            <a :href="Social_Link" class="social-link" v-if="Social_Link">
                 <img class="instagram-icon" alt="Instagram" src="@/assets/images/instagram-icon.svg" />
             </a>
         </header>
 
-        <section class="player-portrait">
+        <section class="player-portrait" v-if="Image_URL">
             <div class="image-background" />
-            <img class="player-image" alt="playerName" src="@/assets/images/shohei-ohtani.png" />
+            <img class="player-image" alt="Player_Name" :src="Image_URL" />
         </section>
 
         <section class="player-info">
             <dl>
-                <div class="info-item">
+                <div class="info-item" v-if="Nickname">
                     <dt>綽號:</dt>
-                    <dd>{{ nickname }}</dd>
+                    <dd>{{ Nickname }}</dd>
                 </div>
-                <div class="info-item">
+                <div class="info-item" v-if="Number">
                     <dt>背號:</dt>
-                    <dd>{{ number }}</dd>
+                    <dd>{{ Number }}</dd>
                 </div>
-                <div class="info-item">
+                <div class="info-item" v-if="Position">
                     <dt>守備位置:</dt>
-                    <dd>{{ position }}</dd>
+                    <dd>{{ Position }}</dd>
                 </div>
             </dl>
-            <!-- <div class="player-info">
-      			<p class="info-item">綽號: Sho-time</p>
-      			<p class="info-item">背號: 17</p>
-      			<p class="info-item">守備位置: 投手/指定打擊</p>
-    		</div> -->
         </section>
         
         <section class="player-background">
@@ -42,44 +76,34 @@
             <img class="baseball-bat" alt="" src="@/assets/images/baseball-bat.svg" />
             <b>個人背景</b>
             <dl class="background-info">
-                <div class="info-item">
+                <div class="info-item" v-if="Birthday">
                     <dt>生日:</dt>
-                    <dd>{{ birthday }}</dd>
+                    <dd>{{ Birthday }}</dd>
                 </div>
-                <div class="info-item">
+                <div class="info-item" v-if="Nationality">
                     <dt>國籍:</dt>
-                    <dd>{{ nationality }}</dd>
+                    <dd>{{ Nationality }}</dd>
                 </div>
-                <div class="info-item">
+                <div class="info-item" v-if="MLB_Debut">
                     <dt>首次亮相:</dt>
-                    <dd>{{ debut }}</dd>
+                    <dd>{{ MLB_Debut }}</dd>
                 </div>
-                <div class="info-item">
+                <div class="info-item" v-if="Dodgers_Debut">
                     <dt>道奇隊初登板:</dt>
-                    <dd>{{ dodgersDebut }}</dd>
+                    <dd>{{ Dodgers_Debut }}</dd>
                 </div>
             </dl>
-            <!-- <div class="background-info">
-      			<p class="shoTime">生日: 07/05/1994</p>
-      			<p class="shoTime">國籍: 日本</p>
-      			<p class="shoTime">首次亮相: 03/29/2018</p>
-      			<p class="shoTime">道奇隊初登板:03/20/2024</p>
-    		</div> -->
         </section>
     	<section class="player-achievements">
-            <div class="rectangleDiv" />
-            <img class="baseball" alt="" src="@/assets/images/baseball.svg" />
-            <b>數據與戰績</b>
-            <ul class="achievements-list">
-                <li v-for="(achievement, index) in achievements" :key="index">
-                - {{ achievement }}
-                </li>
-            </ul>
-            <!-- <div class="achievements-list">
-      			<p class="shoTime">- 2024世界大賽冠軍</p>
-      			<p class="shoTime">- 史上第一位50轟50盜球員</p>
-    		</div> -->
-         </section>	
+        <div class="rectangleDiv" />
+        <img class="baseball" alt="" src="@/assets/images/baseball.svg" />
+        <b>數據與戰績</b>
+        <ul class="achievements-list" v-if="Achievements">
+            <li v-for="(achievement, index) in Achievements" :key="index">
+            - {{ achievement }}
+            </li>
+        </ul>      
+      </section>	
   	</div>
 </template>
 
@@ -126,6 +150,9 @@
 }
 .info-item {
     margin: 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
 }
 dl {
   text-align: left;
@@ -133,6 +160,7 @@ dl {
 dt {
   font-weight: 500;
   margin-right: 5px;
+  white-space: nowrap;
 }
 
 dd {
@@ -188,6 +216,7 @@ dd {
     font-weight: 500;
     color: #000;
     text-align: left;
+    list-style-type: none;
 }
 .image-background {
     position: absolute;

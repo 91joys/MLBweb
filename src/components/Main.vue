@@ -1,124 +1,65 @@
-<script setup>
-  	function onGroupContainerClick() {
-    		// Add your code here
-  	}
-</script>
 <template>
-  	<div :class="$style.position">
-    		<!-- <img :class="$style.positionChild" alt="" src="Group 6.svg" />
-    		<img :class="$style.positionItem" alt="" src="Group 7.svg" />
-    		<img :class="$style.positionInner" alt="" src="Group 5.svg" /> -->
-    		<div :class="$style.ellipseDiv" />
-    		<div :class="$style.parent">
-      			<img :class="$style.icon" alt="" src="@/assets/images/logo.svg" />
-      			<img :class="$style.t119HeaderPrimary1Icon" alt="" src="@/assets/images/dodger-logo.svg" />
-      			<div :class="$style.groupChild" />
-    		</div>
-    		<div :class="$style.hoverWrapper" @click="onGroupContainerClick">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">1</div>
-      			</div>
-    		</div>
-    		<div :class="$style.twemojibaseballWrapper">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">2</div>
-      			</div>
-    		</div>
-    		<div :class="$style.twemojibaseballContainer">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">3</div>
-      			</div>
-    		</div>
-    		<div :class="$style.twemojibaseballFrame">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">7</div>
-      			</div>
-    		</div>
-    		<div :class="$style.groupDiv">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">9</div>
-      			</div>
-    		</div>
-    		<div :class="$style.twemojibaseballWrapper1">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">8</div>
-      			</div>
-    		</div>
-    		<div :class="$style.twemojibaseballWrapper2">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">6</div>
-      			</div>
-    		</div>
-    		<div :class="$style.twemojibaseballWrapper3">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">4</div>
-      			</div>
-    		</div>
-    		<div :class="$style.twemojibaseballWrapper4">
-      			<div :class="$style.hover">
-        				<img :class="$style.vectorIcon" alt="" src="@/assets/images/ball1.svg" />
-        				<img :class="$style.vectorIcon1" alt="" src="@/assets/images/ball2.svg" />
-        				<img :class="$style.vectorIcon2" alt="" src="@/assets/images/ball3.svg" />
-        				<div :class="$style.div">5</div>
-      			</div>
-    		</div>
+	<div :class="$style.position">
+		<img :class="$style.baseballField1" alt="" src="@/assets/images/baseball-field.png" />
+		<div :class="$style.parent">
+			<img :class="$style.icon" alt="MLB Logo" src="@/assets/images/logo.svg" />
+			<img :class="$style.t119HeaderPrimary1Icon" alt="Dodger Logo" src="@/assets/images/dodger-logo.svg" />
+			<div :class="$style.groupChild" />
+		</div>
+		<div :class="$style.baseball1Parent">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div">1</div>
+		</div>
+		<div :class="$style.baseball1Group">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">
+					<p :class="$style.p">2</p>
+			</div>
+		</div>
+		<div :class="$style.baseball1Container">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">
+					<p :class="$style.p">8</p>
+			</div>
+		</div>
+		<div :class="$style.groupDiv">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">
+					<p :class="$style.p">9</p>
+			</div>
+		</div>
+		<div :class="$style.baseball1Parent1">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">7</div>
+		</div>
+		<div :class="$style.baseball1Parent2">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">6</div>
+		</div>
+		<div :class="$style.baseball1Parent3">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">5</div>
+		</div>
+		<div :class="$style.baseball1Parent4">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">
+					<p :class="$style.p">4</p>
+			</div>
+		</div>
+		<div :class="$style.baseball1Parent5">
+			<img :class="$style.baseball1Icon" alt="" src="@/assets/images/baseball.png" />
+			<div :class="$style.div1">3</div>
+		</div>
   	</div>
 </template>
-
-<style  module>.positionChild {
+<style  module>.baseballField1 {
   	position: absolute;
-  	top: 124px;
-  	left: 87px;
-  	width: 1746px;
-  	height: 775px;
+  	top: 111px;
+  	left: 13px;
+  	width: 1893px;
+  	height: 1064px;
+  	object-fit: cover;
 }
-  	.positionItem {
-    		position: absolute;
-    		top: 335px;
-    		left: 324.68px;
-    		width: 1270.6px;
-    		height: 564px;
-  	}
-  	.positionInner {
-    		position: absolute;
-    		top: 423.26px;
-    		left: 476px;
-    		width: 969px;
-    		height: 478.2px;
-  	}
-  	.ellipseDiv {
-    		position: absolute;
-    		top: 765px;
-    		left: calc(50% - 200px);
-    		border-radius: 50%;
-    		background-color: #b5e3b6;
-    		width: 400px;
-    		height: 229px;
-  	}
   	.icon {
     		position: absolute;
     		top: 12.27px;
@@ -152,122 +93,97 @@
     		width: 317px;
     		height: 71.7px;
   	}
-  	.vectorIcon {
-    		position: absolute;
-    		height: 100%;
-    		width: 100%;
-    		top: 0%;
-    		right: 0%;
-    		bottom: 0%;
-    		left: 0%;
-    		max-width: 100%;
-    		overflow: hidden;
-    		max-height: 100%;
-  	}
-  	.vectorIcon1 {
-    		position: absolute;
-    		height: 72.48%;
-    		width: 76.7%;
-    		top: 13.75%;
-    		right: 11.38%;
-    		bottom: 13.77%;
-    		left: 11.93%;
-    		max-width: 100%;
-    		overflow: hidden;
-    		max-height: 100%;
-  	}
-  	.vectorIcon2 {
-    		position: absolute;
-    		height: 70%;
-    		width: 80.18%;
-    		top: 13.89%;
-    		right: 9.72%;
-    		bottom: 16.11%;
-    		left: 10.09%;
-    		max-width: 100%;
-    		overflow: hidden;
-    		max-height: 100%;
-    		opacity: 0.36;
-  	}
-  	.div {
-    		position: absolute;
-    		height: 137.61%;
-    		width: 63.3%;
-    		top: 23.85%;
-    		left: 18.35%;
-    		display: inline-block;
-  	}
-  	.hover {
+  	.baseball1Icon {
     		position: absolute;
     		top: 0px;
     		left: 0px;
-    		width: 109px;
-    		height: 109px;
-    		overflow: hidden;
+    		width: 126px;
+    		height: 126px;
+    		object-fit: cover;
   	}
-  	.hoverWrapper {
+  	.div {
     		position: absolute;
-    		top: 589px;
-    		left: 905px;
-    		width: 109px;
-    		height: 109px;
-    		cursor: pointer;
+    		top: 24px;
+    		left: 36px;
+    		font-weight: 500;
+    		display: inline-block;
+    		width: 54px;
+    		height: 77px;
   	}
-  	.twemojibaseballWrapper {
+  	.baseball1Parent {
     		position: absolute;
-    		top: 825px;
-    		left: 905px;
-    		width: 109px;
-    		height: 109px;
+    		top: 613px;
+    		left: 897px;
+    		width: 126px;
+    		height: 126px;
   	}
-  	.twemojibaseballContainer {
-    		position: absolute;
-    		top: 589px;
-    		left: 1381px;
-    		width: 109px;
-    		height: 109px;
+  	.p {
+    		margin: 0;
   	}
-  	.twemojibaseballFrame {
+  	.div1 {
     		position: absolute;
-    		top: 260px;
-    		left: 1351px;
-    		width: 109px;
-    		height: 109px;
+    		top: 30px;
+    		left: 36px;
+    		font-weight: 500;
+    		display: inline-block;
+    		width: 54px;
+    		height: 65px;
+  	}
+  	.baseball1Group {
+    		position: absolute;
+    		top: 814px;
+    		left: 897px;
+    		width: 126px;
+    		height: 126px;
+  	}
+  	.baseball1Container {
+    		position: absolute;
+    		top: 320px;
+    		left: 897px;
+    		width: 126px;
+    		height: 126px;
   	}
   	.groupDiv {
     		position: absolute;
-    		top: 260px;
-    		left: 459px;
-    		width: 109px;
-    		height: 109px;
+    		top: 383px;
+    		left: 387px;
+    		width: 126px;
+    		height: 126px;
   	}
-  	.twemojibaseballWrapper1 {
+  	.baseball1Parent1 {
     		position: absolute;
-    		top: 180px;
-    		left: 905px;
-    		width: 109px;
-    		height: 109px;
+    		top: 383px;
+    		left: 1300px;
+    		width: 126px;
+    		height: 126px;
   	}
-  	.twemojibaseballWrapper2 {
+  	.baseball1Parent2 {
     		position: absolute;
-    		top: 589px;
-    		left: 429px;
-    		width: 109px;
-    		height: 109px;
+    		top: 613px;
+    		left: 467px;
+    		width: 126px;
+    		height: 126px;
   	}
-  	.twemojibaseballWrapper3 {
+  	.baseball1Parent3 {
     		position: absolute;
-    		top: 431px;
-    		left: 1147px;
-    		width: 109px;
-    		height: 109px;
+    		top: 511px;
+    		left: 682px;
+    		width: 126px;
+    		height: 126px;
   	}
-  	.twemojibaseballWrapper4 {
+  	.baseball1Parent4 {
     		position: absolute;
-    		top: 431px;
-    		left: 666px;
-    		width: 109px;
-    		height: 109px;
+    		top: 511px;
+    		left: 1112px;
+    		width: 126px;
+    		height: 126px;
+  	}
+  	.baseball1Parent5 {
+    		position: absolute;
+    		top: 613px;
+    		left: 1327px;
+    		width: 126px;
+    		height: 126px;
   	}
   	.position {
     		width: 100%;
@@ -279,8 +195,7 @@
     		overflow: hidden;
     		text-align: center;
     		font-size: 64px;
-    		color: #dd2e44;
-    		font-family: Heavitas;
+    		color: #fa1111;
+    		font-family: 'Noto Sans TC';
   	}
-
 </style>
