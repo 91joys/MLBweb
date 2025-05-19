@@ -1,5 +1,6 @@
 <script setup>
 import card from '../components/card.vue'
+import Card_background from '@/components/CardBackground.vue'
 import rawPlayers from '@/assets/data/players1.json'
 
 // 將 Image_URL 加工成 Vite 可用的真實 URL
@@ -23,12 +24,14 @@ const players = rawPlayers.map(player => {
 
 <template>
   <main>
-    <card
+    <Card_background />
+    <!-- <card
       v-for="(player, index) in players"
       :key="index"
       v-bind="player"
-    />
+    /> -->
   </main>
 </template>
 
 <style scoped></style>
+

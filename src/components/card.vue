@@ -3,7 +3,7 @@ defineProps({
   Player_Name: {
     type: String,
   },
-  English_Name: {
+  Chinese_Name: {
     type: String,
   },
   Social_Link: {
@@ -43,7 +43,7 @@ defineProps({
         <div class="card-background" />
         <header class="player-header">
     		<b class="player-name" v-if="Player_Name">{{Player_Name}}</b>
-    		<div class="player-english-name" v-if="English_Name">{{ English_Name }}</div>
+    		<div class="player-english-name" v-if="Chinese_Name">{{ Chinese_Name }}</div>
             <a :href="Social_Link" class="social-link" v-if="Social_Link">
                 <img class="instagram-icon" alt="Instagram" src="@/assets/images/instagram-icon.svg" />
             </a>

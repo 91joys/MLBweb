@@ -1,15 +1,12 @@
 <script setup>
   	import { RouterLink } from 'vue-router';
+	import Logo from '@/components/Logo.vue';
 </script>
 
 <template>
   	<div class="home">
     	<div class="home-header">
-			<div class="logo-container">
-      			<img class="mlb-icon" alt="MLB Logo" src="@/assets/images/logo.svg" />
-      			<div class="divider" />
-				<img class="dodger-logo" alt="Dodger Logo" src="@/assets/images/dodger-logo.svg" />
-    		</div>
+			<Logo customClass="header-logo" />
     		<b class="site-title">MLB 道奇資訊網</b>
     		<div class="site-intro">給台灣人的MLB資訊網，讓球迷可以跟上國際棒球時事</div>
 		</div>
@@ -55,36 +52,10 @@
 }
 
 /* 頂部MLB+道奇logo群組 */
-.logo-container {
-	position: relative;
-	width: 100%;
-	height: 111px;
-	display: flex;
-	flex-direction: row;
-  	justify-content: center;
-  	align-items: center;
+.header-logo {
 	transform: translateX(50px);
-}
-.mlb-icon {
-	position: relative;
-	border-radius: 10px;
-	width: 160px;
-	height: 85px;
-	margin-right: 50px;
-	overflow: hidden;
-}
-.dodger-logo {
-	position: relative;
-	width: 300px;
-	height: 111px;
-	overflow: hidden;
-}
-.divider {
-	position: relative;
-	border-right: 2px solid #fff;
-	box-sizing: border-box;
-	width: 2px;
-	height: 54px;
+	padding-top: 20px;
+	justify-content: center;
 }
 
 .site-title {
