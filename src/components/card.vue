@@ -114,7 +114,6 @@ defineProps({
     height: 747px;
     text-align: center;
     font-size: 20px;
-    color: #005596;
     font-family: 'Noto Sans TC';
 }
 .card-background {
@@ -191,12 +190,14 @@ dd {
     top: 476px;
     left: 202px;
     font-size: 24px;
+    font-weight: 500;
 }
 .player-achievements b{
     position: absolute;
     top: 619px;
     left: 190px;
     font-size: 24px;
+    font-weight: 500;
 }
 .background-info {
     position: absolute;
