@@ -1,6 +1,30 @@
-﻿Player_Name,English_Name,Nickname,Number,Position,Birthday,Nationality,MLB_Debut,Dodgers_Debut,Achievements,Image_URL,Social_Link
-大谷翔平,Shohei Ohtani,Sho-time,17,"DH, Pitcher",07/05/1994,日本,03/29/2018,03/20/2024,"2024世界大賽冠軍, 史上第一位50轟50盜球員",,https://www.instagram.com/shoheiohtani
-Anthony Banda,,,43,Pitcher,08/10/1993,美國,07/22/2017,05/19/2024,2024世界大賽冠軍,,https://www.instagram.com/abandafb3
-Ben Casparius,,,78,Pitcher,02/11/1999,美國,08/31/2024,08/31/2024,2024世界大賽冠軍,,
-Jack Dreyer,,,86,Pitcher,02/27/1999,,03/19/2025,03/19/2025,,,
-Mookie Betts,,Mookie,50,Right Field,10/07/1992,美國,06/29/2014,07/23/2020,"2024世界大賽冠軍, All-Star, Gold Glove, MVP, Silver Slugger",,
+﻿Player_Name,Chinese_Name,Social_Link,Nickname,Number,Position,Image_URL,Birthday,Nationality,MLB_Debut,Dodgers_Debut,Achievements
+Shohei Ohtani,大谷翔平,https://www.instagram.com/shoheiohtani,Sho-time,17,"投手, 指定打席",17-Shohei-Ohtani.png,07/05/1994,日本,03/29/2018,03/20/2024,"2024世界大賽冠軍, 史上第一位50轟50盜球員"
+Anthony Banda,,https://www.instagram.com/abandafb3,,43,投手,43-Anthony-Banda.png,08/10/1993,美國,07/22/2017,05/19/2024,2024世界大賽冠軍
+Ben Casparius,,,,78,投手,78-Ben-Casparius.png,02/11/1999,美國,08/31/2024,08/31/2024,2024世界大賽冠軍
+Jack Dreyer,,,,86,投手,86-Jack-Dreyer.png,02/27/1999,美國,03/19/2025,03/19/2025,
+Luis García,,https://www.instagram.com/luisgarciag57,Amadito,57,投手,57-Luis-García.png,01/30/1987,多明尼加共和國,07/10/2013,,
+Tyler Glasnow,,https://www.instagram.com/glasnowt,Baby Giraffe,31,投手,31-Tyler-Glasnow.png,08/23/1993,美國,07/07/2016,,
+Tony Gonsolin,,https://www.instagram.com/goooose15,Goooose,26,投手,26-Tony-Gonsolin.png,05/14/1994,美國,06/26/2019,06/26/2019,2020世界大賽冠軍
+Brusdar Graterol,,https://www.instagram.com/brusdar14graterol,,48,投手,48-Brusdar-Graterol.png,08/26/1998,委內瑞拉,09/01/2019,,"2020世界大賽冠軍, 2024世界大賽冠軍"
+Michael Grove,,https://www.instagram.com/mgrove_2/?locale=zh-TW&hl=ar,,29,投手,29-Michael-Grove.png,12/18/1996,美國,05/15/2022,05/15/2022,
+Edgardo Henriquez,,,,60,投手,60-Edgardo-Henriquez.png,06/24/2002,委內瑞拉,09/24/2024,09/24/2024,
+Kyle Hurt,,https://x.com/hurt_kyle,,63,投手,63-Kyle-Hurt.png,05/30/1998,美國,09/12/2023,09/12/2023,
+Clayton Kershaw,,https://www.instagram.com/claytonkershaw,Kersh,22,投手,22-Clayton-Kershaw.png,03/19/1988,美國,05/25/2008,05/25/2008,"2020世界大賽冠軍, 2024世界大賽冠軍"
+Landon Knack,,https://x.com/LKnackers,,96,投手,96-Landon-Knack.png,07/15/1997,美國,04/17/2024,04/17/2024,2024世界大賽冠軍
+Michael Kopech,,https://www.instagram.com/mikop34,Kopey,45,投手,45-Michael-Kopech.png,04/30/1996,美國,08/21/2018,,2024世界大賽冠軍
+Dustin May,,https://www.instagram.com/d_maydabeast,Big Red,85,投手,85-Dustin-May.png,09/06/1997,美國,08/02/2019,08/02/2019,2020世界大賽冠軍
+Evan Phillips,,https://www.instagram.com/evan_phillips33,Philly,59,投手,59-Evan-Phillips.png,09/11/1994,美國,07/03/2018,,
+River Ryan,,,,77,投手,77-River-Ryan.png,08/17/1998,美國,07/22/2024,,
+Roki Sasaki,佐佐木朗希,https://www.instagram.com/rokisasaki/?locale=zh-TW&hl=af,,11,投手,11-Roki-Sasaki.png,11/03/2001,日本,03/19/2025,03/19/2025,
+Matt Sauer,,https://x.com/redsauers,,64,投手,64-Matt-Sauer.png,01/21/1999,美國,03/31/2024,,
+Tanner Scott,,https://www.instagram.com/tannerscott,Scottie,66,投手,66-Tanner-Scott.png,07/22/1994,美國,09/20/2017,,
+Emmet Sheehan,,,,80,投手,80-Emmet-Sheehan.png,11/15/1999,美國,06/16/2023,,
+Blake Snell,,https://www.instagram.com/snellzilla4,Zilla,7,投手,7-Blake-Snell.png,12/04/1992,美國,04/23/2016,,"2018賽揚獎, 2023賽揚獎"
+Gavin Stone,,,,35,投手,35-Gavin-Stone.png,10/15/1998,美國,05/03/2023,,
+Blake Treinen,,,Train,49,投手,49-Blake-Treinen.png,06/30/1988,美國,04/12/2014,,"2020世界大賽冠軍, 2024世界大賽冠軍"
+Lou Trivino,,,Sweet Lou,58,投手,58-Lou-Trivino.png,10/01/1991,美國,04/17/2018,,
+Alex Vesia,,https://x.com/Alex_Vesia,,51,投手,51-Alex-Vesia.png,04/11/1996,美國,07/25/2020,,2024世界大賽冠軍
+Yoshinobu Yamamoto,山本由伸,https://www.instagram.com/yoshinobu__yamamoto/,,18,投手,18-Yoshinobu-Yamamoto.png,08/17/1998,日本,03/21/2024,03/21/2024,2024世界大賽冠軍
+Kirby Yates,,https://www.instagram.com/kirbskauai,Chubbs Senior,38,投手,38-Kirby-Yates.png,03/25/1987,美國,06/07/2014,,2019國聯救援王
+Mookie Betts,,,Mookie,50,Right Field,,10/07/1992,美國,06/29/2014,07/23/2020,"2020世界大賽冠軍, 2024世界大賽冠軍, Gold Glove, MVP, Silver Slugger"

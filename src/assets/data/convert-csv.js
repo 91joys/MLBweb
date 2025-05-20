@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // 讀取原始 CSV 檔案
 const inputPath = path.join(__dirname, "Dodgers-Players-Database.csv"); // ← 放你的 CSV 檔
-const outputPath = path.join(__dirname, "players1.json");
+const outputPath = path.join(__dirname, "players.json");
 
 const csv = fs.readFileSync(inputPath, "utf-8");
 
@@ -49,7 +49,7 @@ const data = lines.slice(1).map((line) => {
 
     // 如果是圖片欄位，補完整路徑
     if (key === "Image_URL") {
-      value = value ? `src/assets/images/players/${value}` : null;
+      value = value ? `${value}` : null;
     }
 
     obj[key] = value === "" ? null : value;

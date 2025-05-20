@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import card from '../components/card.vue'
-import rawPlayers from '@/assets/data/players1.json'
+import rawPlayers from '@/assets/data/players.json'
 import Carousel from 'primevue/carousel';
 
 // 將 Image_URL 加工成 Vite 可用的真實 URL

@@ -1,0 +1,447 @@
+[
+  {
+    "Player_Name": "Shohei Ohtani",
+    "Chinese_Name": "大谷翔平",
+    "Social_Link": "https://www.instagram.com/shoheiohtani",
+    "Nickname": "Sho-time",
+    "Number": "17",
+    "Position": "投手, 指定打席",
+    "Image_URL": "17-Shohei-Ohtani.png",
+    "Birthday": "07/05/1994",
+    "Nationality": "日本",
+    "MLB_Debut": "03/29/2018",
+    "Dodgers_Debut": "03/20/2024",
+    "Achievements": [
+      "2024世界大賽冠軍",
+      "史上第一位50轟50盜球員"
+    ]
+  },
+  {
+    "Player_Name": "Anthony Banda",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/abandafb3",
+    "Nickname": null,
+    "Number": "43",
+    "Position": "投手",
+    "Image_URL": "43-Anthony-Banda.png",
+    "Birthday": "08/10/1993",
+    "Nationality": "美國",
+    "MLB_Debut": "07/22/2017",
+    "Dodgers_Debut": "05/19/2024",
+    "Achievements": [
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Ben Casparius",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": null,
+    "Number": "78",
+    "Position": "投手",
+    "Image_URL": "78-Ben-Casparius.png",
+    "Birthday": "02/11/1999",
+    "Nationality": "美國",
+    "MLB_Debut": "08/31/2024",
+    "Dodgers_Debut": "08/31/2024",
+    "Achievements": [
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Jack Dreyer",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": null,
+    "Number": "86",
+    "Position": "投手",
+    "Image_URL": "86-Jack-Dreyer.png",
+    "Birthday": "02/27/1999",
+    "Nationality": "美國",
+    "MLB_Debut": "03/19/2025",
+    "Dodgers_Debut": "03/19/2025",
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Luis García",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/luisgarciag57",
+    "Nickname": "Amadito",
+    "Number": "57",
+    "Position": "投手",
+    "Image_URL": "57-Luis-García.png",
+    "Birthday": "01/30/1987",
+    "Nationality": "多明尼加共和國",
+    "MLB_Debut": "07/10/2013",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Tyler Glasnow",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/glasnowt",
+    "Nickname": "Baby Giraffe",
+    "Number": "31",
+    "Position": "投手",
+    "Image_URL": "31-Tyler-Glasnow.png",
+    "Birthday": "08/23/1993",
+    "Nationality": "美國",
+    "MLB_Debut": "07/07/2016",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Tony Gonsolin",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/goooose15",
+    "Nickname": "Goooose",
+    "Number": "26",
+    "Position": "投手",
+    "Image_URL": "26-Tony-Gonsolin.png",
+    "Birthday": "05/14/1994",
+    "Nationality": "美國",
+    "MLB_Debut": "06/26/2019",
+    "Dodgers_Debut": "06/26/2019",
+    "Achievements": [
+      "2020世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Brusdar Graterol",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/brusdar14graterol",
+    "Nickname": null,
+    "Number": "48",
+    "Position": "投手",
+    "Image_URL": "48-Brusdar-Graterol.png",
+    "Birthday": "08/26/1998",
+    "Nationality": "委內瑞拉",
+    "MLB_Debut": "09/01/2019",
+    "Dodgers_Debut": null,
+    "Achievements": [
+      "2020世界大賽冠軍",
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Michael Grove",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/mgrove_2/?locale=zh-TW&hl=ar",
+    "Nickname": null,
+    "Number": "29",
+    "Position": "投手",
+    "Image_URL": "29-Michael-Grove.png",
+    "Birthday": "12/18/1996",
+    "Nationality": "美國",
+    "MLB_Debut": "05/15/2022",
+    "Dodgers_Debut": "05/15/2022",
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Edgardo Henriquez",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": null,
+    "Number": "60",
+    "Position": "投手",
+    "Image_URL": "60-Edgardo-Henriquez.png",
+    "Birthday": "06/24/2002",
+    "Nationality": "委內瑞拉",
+    "MLB_Debut": "09/24/2024",
+    "Dodgers_Debut": "09/24/2024",
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Kyle Hurt",
+    "Chinese_Name": null,
+    "Social_Link": "https://x.com/hurt_kyle",
+    "Nickname": null,
+    "Number": "63",
+    "Position": "投手",
+    "Image_URL": "63-Kyle-Hurt.png",
+    "Birthday": "05/30/1998",
+    "Nationality": "美國",
+    "MLB_Debut": "09/12/2023",
+    "Dodgers_Debut": "09/12/2023",
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Clayton Kershaw",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/claytonkershaw",
+    "Nickname": "Kersh",
+    "Number": "22",
+    "Position": "投手",
+    "Image_URL": "22-Clayton-Kershaw.png",
+    "Birthday": "03/19/1988",
+    "Nationality": "美國",
+    "MLB_Debut": "05/25/2008",
+    "Dodgers_Debut": "05/25/2008",
+    "Achievements": [
+      "2020世界大賽冠軍",
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Landon Knack",
+    "Chinese_Name": null,
+    "Social_Link": "https://x.com/LKnackers",
+    "Nickname": null,
+    "Number": "96",
+    "Position": "投手",
+    "Image_URL": "96-Landon-Knack.png",
+    "Birthday": "07/15/1997",
+    "Nationality": "美國",
+    "MLB_Debut": "04/17/2024",
+    "Dodgers_Debut": "04/17/2024",
+    "Achievements": [
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Michael Kopech",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/mikop34",
+    "Nickname": "Kopey",
+    "Number": "45",
+    "Position": "投手",
+    "Image_URL": "45-Michael-Kopech.png",
+    "Birthday": "04/30/1996",
+    "Nationality": "美國",
+    "MLB_Debut": "08/21/2018",
+    "Dodgers_Debut": null,
+    "Achievements": [
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Dustin May",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/d_maydabeast",
+    "Nickname": "Big Red",
+    "Number": "85",
+    "Position": "投手",
+    "Image_URL": "85-Dustin-May.png",
+    "Birthday": "09/06/1997",
+    "Nationality": "美國",
+    "MLB_Debut": "08/02/2019",
+    "Dodgers_Debut": "08/02/2019",
+    "Achievements": [
+      "2020世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Evan Phillips",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/evan_phillips33",
+    "Nickname": "Philly",
+    "Number": "59",
+    "Position": "投手",
+    "Image_URL": "59-Evan-Phillips.png",
+    "Birthday": "09/11/1994",
+    "Nationality": "美國",
+    "MLB_Debut": "07/03/2018",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "River Ryan",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": null,
+    "Number": "77",
+    "Position": "投手",
+    "Image_URL": "77-River-Ryan.png",
+    "Birthday": "08/17/1998",
+    "Nationality": "美國",
+    "MLB_Debut": "07/22/2024",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Roki Sasaki",
+    "Chinese_Name": "佐佐木朗希",
+    "Social_Link": "https://www.instagram.com/rokisasaki/?locale=zh-TW&hl=af",
+    "Nickname": null,
+    "Number": "11",
+    "Position": "投手",
+    "Image_URL": "11-Roki-Sasaki.png",
+    "Birthday": "11/03/2001",
+    "Nationality": "日本",
+    "MLB_Debut": "03/19/2025",
+    "Dodgers_Debut": "03/19/2025",
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Matt Sauer",
+    "Chinese_Name": null,
+    "Social_Link": "https://x.com/redsauers",
+    "Nickname": null,
+    "Number": "64",
+    "Position": "投手",
+    "Image_URL": "64-Matt-Sauer.png",
+    "Birthday": "01/21/1999",
+    "Nationality": "美國",
+    "MLB_Debut": "03/31/2024",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Tanner Scott",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/tannerscott",
+    "Nickname": "Scottie",
+    "Number": "66",
+    "Position": "投手",
+    "Image_URL": "66-Tanner-Scott.png",
+    "Birthday": "07/22/1994",
+    "Nationality": "美國",
+    "MLB_Debut": "09/20/2017",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Emmet Sheehan",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": null,
+    "Number": "80",
+    "Position": "投手",
+    "Image_URL": "80-Emmet-Sheehan.png",
+    "Birthday": "11/15/1999",
+    "Nationality": "美國",
+    "MLB_Debut": "06/16/2023",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Blake Snell",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/snellzilla4",
+    "Nickname": "Zilla",
+    "Number": "7",
+    "Position": "投手",
+    "Image_URL": "7-Blake-Snell.png",
+    "Birthday": "12/04/1992",
+    "Nationality": "美國",
+    "MLB_Debut": "04/23/2016",
+    "Dodgers_Debut": null,
+    "Achievements": [
+      "2018賽揚獎",
+      "2023賽揚獎"
+    ]
+  },
+  {
+    "Player_Name": "Gavin Stone",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": null,
+    "Number": "35",
+    "Position": "投手",
+    "Image_URL": "35-Gavin-Stone.png",
+    "Birthday": "10/15/1998",
+    "Nationality": "美國",
+    "MLB_Debut": "05/03/2023",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Blake Treinen",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": "Train",
+    "Number": "49",
+    "Position": "投手",
+    "Image_URL": "49-Blake-Treinen.png",
+    "Birthday": "06/30/1988",
+    "Nationality": "美國",
+    "MLB_Debut": "04/12/2014",
+    "Dodgers_Debut": null,
+    "Achievements": [
+      "2020世界大賽冠軍",
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Lou Trivino",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": "Sweet Lou",
+    "Number": "58",
+    "Position": "投手",
+    "Image_URL": "58-Lou-Trivino.png",
+    "Birthday": "10/01/1991",
+    "Nationality": "美國",
+    "MLB_Debut": "04/17/2018",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Alex Vesia",
+    "Chinese_Name": null,
+    "Social_Link": "https://x.com/Alex_Vesia",
+    "Nickname": null,
+    "Number": "51",
+    "Position": "投手",
+    "Image_URL": "51-Alex-Vesia.png",
+    "Birthday": "04/11/1996",
+    "Nationality": "美國",
+    "MLB_Debut": "07/25/2020",
+    "Dodgers_Debut": null,
+    "Achievements": [
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Yoshinobu Yamamoto",
+    "Chinese_Name": "山本由伸",
+    "Social_Link": "https://www.instagram.com/yoshinobu__yamamoto/",
+    "Nickname": null,
+    "Number": "18",
+    "Position": "投手",
+    "Image_URL": "18-Yoshinobu-Yamamoto.png",
+    "Birthday": "08/17/1998",
+    "Nationality": "日本",
+    "MLB_Debut": "03/21/2024",
+    "Dodgers_Debut": "03/21/2024",
+    "Achievements": [
+      "2024世界大賽冠軍"
+    ]
+  },
+  {
+    "Player_Name": "Kirby Yates",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/kirbskauai",
+    "Nickname": "Chubbs Senior",
+    "Number": "38",
+    "Position": "投手",
+    "Image_URL": "38-Kirby-Yates.png",
+    "Birthday": "03/25/1987",
+    "Nationality": "美國",
+    "MLB_Debut": "06/07/2014",
+    "Dodgers_Debut": null,
+    "Achievements": [
+      "2019國聯救援王"
+    ]
+  },
+  {
+    "Player_Name": "Mookie Betts",
+    "Chinese_Name": null,
+    "Social_Link": null,
+    "Nickname": "Mookie",
+    "Number": "50",
+    "Position": "Right Field",
+    "Image_URL": null,
+    "Birthday": "10/07/1992",
+    "Nationality": "美國",
+    "MLB_Debut": "06/29/2014",
+    "Dodgers_Debut": "07/23/2020",
+    "Achievements": [
+      "2020世界大賽冠軍",
+      "2024世界大賽冠軍",
+      "Gold Glove",
+      "MVP",
+      "Silver Slugger"
+    ]
+  }
+]
