@@ -1,12 +1,12 @@
 <script setup>
-import Logo  from "@/components/Logo.vue";
+import Logo from "@/components/Logo.vue";
 import Carousel from "@/components/Carousel.vue";
 </script>
 
 <template>
   <div class="player-card-inner">
     <div class="card-gradient" />
-    <Logo customClass="header-logo"/>
+    <Logo customClass="header-logo" />
     <div class="position-title">投手</div>
     <div class="carousel">
       <Carousel />
