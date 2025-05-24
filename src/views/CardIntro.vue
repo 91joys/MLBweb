@@ -1,13 +1,36 @@
 <script setup>
 import Logo from "@/components/Logo.vue";
 import Carousel from "@/components/Carousel.vue";
+import { ref } from "vue";
+
+// 定義當前選中的位置
+const selectedPosition = ref("所有球員");
+
+// 可選的位置列表
+const positions = ["所有球員", "投手", "捕手", "內野手", "外野手"];
+
+// 當選單選項變更時的處理函數
+const handlePositionChange = (position) => {
+  selectedPosition.value = position;
+};
 </script>
 
 <template>
   <div class="player-card-inner">
     <div class="card-gradient" />
     <Logo customClass="header-logo" />
-    <div class="position-title">投手</div>
+    <div class="position-title">{{ selectedPosition }}</div>
+    <!-- 添加位置選單 -->
+    <div class="position-menu">
+      <div
+        v-for="position in positions"
+        :key="position"
+        :class="['position-item', { active: selectedPosition === position }]"
+        @click="handlePositionChange(position)"
+      >
+        {{ position }}
+      </div>
+    </div>
     <div class="carousel">
       <Carousel />
     </div>
@@ -54,7 +77,39 @@ import Carousel from "@/components/Carousel.vue";
   width: 317px;
   height: 97px;
 }
+/* 位置選單樣式 */
+.position-menu {
+  position: absolute;
+  top: 130px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 20;
+}
 
+.position-item {
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  color: #005596;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.position-item:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.position-item.active {
+  background-color: #fff;
+  color: #d31145;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 .carousel {
   position: relative;
   width: 100%; /* 保持 100% */

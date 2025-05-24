@@ -11,10 +11,7 @@
     "Nationality": "日本",
     "MLB_Debut": "03/29/2018",
     "Dodgers_Debut": "03/20/2024",
-    "Achievements": [
-      "2024世界大賽冠軍",
-      "史上第一位50轟50盜球員"
-    ]
+    "Achievements": ["2024世界大賽冠軍", "史上第一位50轟50盜球員"]
   },
   {
     "Player_Name": "Anthony Banda",
@@ -28,9 +25,7 @@
     "Nationality": "美國",
     "MLB_Debut": "07/22/2017",
     "Dodgers_Debut": "05/19/2024",
-    "Achievements": [
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Ben Casparius",
@@ -44,9 +39,7 @@
     "Nationality": "美國",
     "MLB_Debut": "08/31/2024",
     "Dodgers_Debut": "08/31/2024",
-    "Achievements": [
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Jack Dreyer",
@@ -102,9 +95,7 @@
     "Nationality": "美國",
     "MLB_Debut": "06/26/2019",
     "Dodgers_Debut": "06/26/2019",
-    "Achievements": [
-      "2020世界大賽冠軍"
-    ]
+    "Achievements": ["2020世界大賽冠軍"]
   },
   {
     "Player_Name": "Brusdar Graterol",
@@ -118,10 +109,7 @@
     "Nationality": "委內瑞拉",
     "MLB_Debut": "09/01/2019",
     "Dodgers_Debut": null,
-    "Achievements": [
-      "2020世界大賽冠軍",
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2020世界大賽冠軍", "2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Michael Grove",
@@ -177,10 +165,7 @@
     "Nationality": "美國",
     "MLB_Debut": "05/25/2008",
     "Dodgers_Debut": "05/25/2008",
-    "Achievements": [
-      "2020世界大賽冠軍",
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2020世界大賽冠軍", "2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Landon Knack",
@@ -194,9 +179,7 @@
     "Nationality": "美國",
     "MLB_Debut": "04/17/2024",
     "Dodgers_Debut": "04/17/2024",
-    "Achievements": [
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Michael Kopech",
@@ -210,9 +193,7 @@
     "Nationality": "美國",
     "MLB_Debut": "08/21/2018",
     "Dodgers_Debut": null,
-    "Achievements": [
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Dustin May",
@@ -226,9 +207,7 @@
     "Nationality": "美國",
     "MLB_Debut": "08/02/2019",
     "Dodgers_Debut": "08/02/2019",
-    "Achievements": [
-      "2020世界大賽冠軍"
-    ]
+    "Achievements": ["2020世界大賽冠軍"]
   },
   {
     "Player_Name": "Evan Phillips",
@@ -326,10 +305,7 @@
     "Nationality": "美國",
     "MLB_Debut": "04/23/2016",
     "Dodgers_Debut": null,
-    "Achievements": [
-      "2018賽揚獎",
-      "2023賽揚獎"
-    ]
+    "Achievements": ["2018賽揚獎", "2023賽揚獎"]
   },
   {
     "Player_Name": "Gavin Stone",
@@ -357,10 +333,7 @@
     "Nationality": "美國",
     "MLB_Debut": "04/12/2014",
     "Dodgers_Debut": null,
-    "Achievements": [
-      "2020世界大賽冠軍",
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2020世界大賽冠軍", "2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Lou Trivino",
@@ -388,9 +361,7 @@
     "Nationality": "美國",
     "MLB_Debut": "07/25/2020",
     "Dodgers_Debut": null,
-    "Achievements": [
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Yoshinobu Yamamoto",
@@ -404,9 +375,7 @@
     "Nationality": "日本",
     "MLB_Debut": "03/21/2024",
     "Dodgers_Debut": "03/21/2024",
-    "Achievements": [
-      "2024世界大賽冠軍"
-    ]
+    "Achievements": ["2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Kirby Yates",
@@ -420,28 +389,174 @@
     "Nationality": "美國",
     "MLB_Debut": "06/07/2014",
     "Dodgers_Debut": null,
-    "Achievements": [
-      "2019國聯救援王"
-    ]
+    "Achievements": ["2019國聯救援王"]
+  },
+  {
+    "Player_Name": "Dalton Rushing",
+    "Chinese_Name": null,
+    "Social_Link": "https://x.com/daltonrushing7",
+    "Nickname": null,
+    "Number": "68",
+    "Position": "捕手",
+    "Image_URL": "68-Dalton-Rushing.png",
+    "Birthday": "02/21/2001",
+    "Nationality": "美國",
+    "MLB_Debut": "05/15/2025",
+    "Dodgers_Debut": "05/15/2025",
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Will Smith",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/will.smith",
+    "Nickname": "Smitty",
+    "Number": "16",
+    "Position": "捕手",
+    "Image_URL": "16-Will-Smith.png",
+    "Birthday": "03/28/1995",
+    "Nationality": "美國",
+    "MLB_Debut": "05/28/2019",
+    "Dodgers_Debut": null,
+    "Achievements": ["2020世界大賽冠軍", "2024世界大賽冠軍"]
   },
   {
     "Player_Name": "Mookie Betts",
     "Chinese_Name": null,
-    "Social_Link": null,
-    "Nickname": "Mookie",
+    "Social_Link": "https://www.instagram.com/mookiebetts",
+    "Nickname": null,
     "Number": "50",
-    "Position": "Right Field",
-    "Image_URL": null,
+    "Position": "內野手",
+    "Image_URL": "50-Mookie-Betts.png",
     "Birthday": "10/07/1992",
     "Nationality": "美國",
     "MLB_Debut": "06/29/2014",
     "Dodgers_Debut": "07/23/2020",
-    "Achievements": [
-      "2020世界大賽冠軍",
-      "2024世界大賽冠軍",
-      "Gold Glove",
-      "MVP",
-      "Silver Slugger"
-    ]
+    "Achievements": ["2020世界大賽冠軍", "2024世界大賽冠軍", "金手套"]
+  },
+  {
+    "Player_Name": "Tommy Edman",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/tommyedman",
+    "Nickname": "Eddie",
+    "Number": "25",
+    "Position": "內野手",
+    "Image_URL": "25-Tommy-Edman.png",
+    "Birthday": "05/09/1995",
+    "Nationality": "美國",
+    "MLB_Debut": "06/08/2019",
+    "Dodgers_Debut": null,
+    "Achievements": ["2024世界大賽冠軍"]
+  },
+  {
+    "Player_Name": "Freddie Freeman",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/freddiefreeman",
+    "Nickname": "Phillip",
+    "Number": "5",
+    "Position": "內野手",
+    "Image_URL": "5-Freddie-Freeman.png",
+    "Birthday": "09/12/1989",
+    "Nationality": "美國",
+    "MLB_Debut": "09/01/2010",
+    "Dodgers_Debut": null,
+    "Achievements": ["2021世界大賽冠軍", "2024世界大賽冠軍"]
+  },
+  {
+    "Player_Name": "Enrique Hernández",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/kikehndez",
+    "Nickname": "Kiké",
+    "Number": "8",
+    "Position": "內野手",
+    "Image_URL": "8-Enrique-Hernández.png",
+    "Birthday": "08/24/1991",
+    "Nationality": "美國",
+    "MLB_Debut": "07/01/2014",
+    "Dodgers_Debut": null,
+    "Achievements": ["2020世界大賽冠軍", "2024世界大賽冠軍"]
+  },
+  {
+    "Player_Name": "Hyeseong Kim",
+    "Chinese_Name": "金慧成",
+    "Social_Link": "https://www.instagram.com/kimhs.3/",
+    "Nickname": null,
+    "Number": "6",
+    "Position": "內野手",
+    "Image_URL": "6-Hyeseong-Kim.png",
+    "Birthday": "01/27/1999",
+    "Nationality": "南韓",
+    "MLB_Debut": "05/03/2025",
+    "Dodgers_Debut": "05/03/2025",
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Max Muncy",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/maxmuncy",
+    "Nickname": "Funky Muncy",
+    "Number": "13",
+    "Position": "內野手",
+    "Image_URL": "13-Max-Muncy.png",
+    "Birthday": "08/25/1990",
+    "Nationality": "美國",
+    "MLB_Debut": "04/25/2015",
+    "Dodgers_Debut": null,
+    "Achievements": ["2020世界大賽冠軍", "2024世界大賽冠軍"]
+  },
+  {
+    "Player_Name": "Miguel Rojas",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/miggyslocker",
+    "Nickname": "Miggy Ro",
+    "Number": "72",
+    "Position": "內野手",
+    "Image_URL": "72-Miguel-Rojas.png",
+    "Birthday": "02/24/1989",
+    "Nationality": "委內瑞拉",
+    "MLB_Debut": "06/06/2014",
+    "Dodgers_Debut": null,
+    "Achievements": ["2024世界大賽冠軍"]
+  },
+  {
+    "Player_Name": "Michael Conforto",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/mconforto8",
+    "Nickname": "Forto",
+    "Number": "23",
+    "Position": "外野手",
+    "Image_URL": "23-Michael-Conforto.png",
+    "Birthday": "03/01/1993",
+    "Nationality": "美國",
+    "MLB_Debut": "07/24/2015",
+    "Dodgers_Debut": null,
+    "Achievements": []
+  },
+  {
+    "Player_Name": "Teoscar Hernández",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/elchino242",
+    "Nickname": "Mr. Seeds",
+    "Number": "37",
+    "Position": "外野手",
+    "Image_URL": "37-Teoscar-Hernández.png",
+    "Birthday": "10/15/1992",
+    "Nationality": "多明尼加共和國",
+    "MLB_Debut": "08/12/2016",
+    "Dodgers_Debut": null,
+    "Achievements": ["2024世界大賽冠軍"]
+  },
+  {
+    "Player_Name": "Andy Pages",
+    "Chinese_Name": null,
+    "Social_Link": "https://www.instagram.com/andy_pages_abreu_18/",
+    "Nickname": null,
+    "Number": "44",
+    "Position": "外野手",
+    "Image_URL": "44-Andy-Pages.png",
+    "Birthday": "12/08/2000",
+    "Nationality": "古巴",
+    "MLB_Debut": "04/16/2024",
+    "Dodgers_Debut": null,
+    "Achievements": ["2024世界大賽冠軍"]
   }
 ]
