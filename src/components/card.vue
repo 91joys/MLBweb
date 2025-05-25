@@ -41,6 +41,13 @@ defineProps({
 <template>
   <div class="player-card">
     <div class="card-background" />
+    <!-- 球員照片 -->
+    <section class="player-portrait" v-if="Image_URL">
+      <div class="image-background" />
+      <img class="player-image" alt="Player_Name" :src="Image_URL" />
+    </section>
+
+    <!-- 球員姓名、資訊 -->
     <header class="player-header">
       <b class="player-name" v-if="Player_Name">{{ Player_Name }}</b>
       <div class="player-chinese-name" v-if="Chinese_Name">
@@ -56,7 +63,6 @@ defineProps({
           <b>{{ Number }}</b>
         </div>
       </div>
-
       <a :href="Social_Link" class="social-link">
         <img
           class="instagram-icon"
@@ -65,12 +71,6 @@ defineProps({
         />
       </a>
     </header>
-
-    <section class="player-portrait" v-if="Image_URL">
-      <div class="image-background" />
-      <img class="player-image" alt="Player_Name" :src="Image_URL" />
-    </section>
-
     <section class="player-info">
       <dl>
         <div class="info-item" v-if="Nickname">
@@ -84,6 +84,7 @@ defineProps({
       </dl>
     </section>
 
+    <!-- 球員背景 -->
     <section class="player-background">
       <div class="background-frame" />
       <div class="bat-background" />
@@ -108,6 +109,8 @@ defineProps({
         </div>
       </dl>
     </section>
+
+    <!-- 球員成就 -->
     <section class="player-achievements">
       <div class="achievements-frame" />
       <div class="ball-background" />
@@ -119,6 +122,8 @@ defineProps({
         </li>
       </ul>
     </section>
+
+    <!-- 評分、喜歡、評論 -->
     <footer>
       <img class="star" alt="" src="@/assets/images/star.svg" />
       <b class="count-star">5/5</b>
@@ -150,6 +155,28 @@ defineProps({
   width: 546px;
   height: 625px;
 }
+
+/* 球員照片 */
+.player-image {
+  position: absolute;
+  top: 0px;
+  left: 49px;
+  width: 421px;
+  height: 314px;
+  object-fit: cover;
+}
+.image-background {
+  position: absolute;
+  top: 208px;
+  left: 30px;
+  box-shadow: 0px -6px 3.8px rgba(0, 0, 0, 0.25) inset;
+  border-radius: 53px;
+  background-color: #005596;
+  width: 486px;
+  height: 106px;
+}
+
+/* 球員姓名、資訊 */
 .player-name {
   position: absolute;
   top: 322px;
@@ -210,31 +237,13 @@ defineProps({
   overflow: hidden;
   max-height: 100%;
 }
-.player-image {
+.instagram-icon {
   position: absolute;
-  top: 0px;
-  left: 49px;
-  width: 421px;
-  height: 314px;
-  object-fit: cover;
-}
-.info-item {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
-dl {
-  text-align: left;
-}
-dt {
-  font-weight: 500;
-  margin-right: 5px;
-  white-space: nowrap;
-}
-
-dd {
-  margin: 0;
+  top: 387px;
+  left: 37px;
+  width: 39px;
+  height: 40px;
+  overflow: hidden;
 }
 .player-info {
   position: absolute;
@@ -247,59 +256,31 @@ dd {
   display: inline-block;
   width: 229px;
 }
-.instagram-icon {
-  position: absolute;
-  top: 387px;
-  left: 37px;
-  width: 39px;
-  height: 40px;
-  overflow: hidden;
+dl {
+  text-align: left;
 }
+dt {
+  font-weight: 500;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+dd {
+  margin: 0;
+}
+.info-item {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+/* 球員背景 */
 .player-background b {
   position: absolute;
   top: 489px;
   left: 111px;
   font-size: 24px;
 }
-
-.background-info {
-  position: absolute;
-  top: 490px;
-  left: 263px;
-  letter-spacing: 0.03em;
-  line-height: 31px;
-  font-weight: 500;
-  color: #000;
-  text-align: left;
-}
-.player-achievements b {
-  position: absolute;
-  top: 638px;
-  left: 99px;
-  font-size: 24px;
-}
-.achievements-list {
-  position: absolute;
-  top: 639px;
-  left: 260px;
-  letter-spacing: 0.03em;
-  line-height: 31px;
-  font-weight: 500;
-  color: #000;
-  text-align: left;
-  list-style-type: none;
-}
-.image-background {
-  position: absolute;
-  top: 208px;
-  left: 30px;
-  box-shadow: 0px -6px 3.8px rgba(0, 0, 0, 0.25) inset;
-  border-radius: 53px;
-  background-color: #005596;
-  width: 486px;
-  height: 106px;
-}
-
 .background-frame {
   position: absolute;
   top: 487px;
@@ -327,6 +308,25 @@ dd {
   height: 38px;
   overflow: hidden;
 }
+
+.background-info {
+  position: absolute;
+  top: 490px;
+  left: 263px;
+  letter-spacing: 0.03em;
+  line-height: 31px;
+  font-weight: 500;
+  color: #000;
+  text-align: left;
+}
+
+/* 球員成就 */
+.player-achievements b {
+  position: absolute;
+  top: 638px;
+  left: 99px;
+  font-size: 24px;
+}
 .achievements-frame {
   position: absolute;
   top: 635px;
@@ -337,7 +337,6 @@ dd {
   width: 190px;
   height: 42px;
 }
-
 .baseball {
   position: absolute;
   top: 633px;
@@ -355,6 +354,19 @@ dd {
   width: 56px;
   height: 56px;
 }
+.achievements-list {
+  position: absolute;
+  top: 639px;
+  left: 260px;
+  letter-spacing: 0.03em;
+  line-height: 31px;
+  font-weight: 500;
+  color: #000;
+  text-align: left;
+  list-style-type: none;
+}
+
+/* 評分、喜歡、評論 */
 .star {
   position: absolute;
   top: 741px;
