@@ -40,8 +40,11 @@ const actualPlayers = computed(() => {
   return playersWithImages;
 });
 
+const totalActualItems = computed(() => actualPlayers.value.length);
+
 const isLooping = computed(
-  () => actualPlayers.value.length > itemsPerView.value
+  () =>
+    totalActualItems.value > itemsPerView.value && totalActualItems.value > 0 // Ensure looping only if there are items
 );
 
 // 2. 用於渲染的球員列表 (包含複製項和唯一key)
@@ -97,26 +100,15 @@ const calculateItemWidth = () => {
   }
 };
 
-const totalOriginalSlides = computed(() => {
-  if (actualPlayers.value.length === 0) return 1; // 處理空列表的邊緣情況
-  if (isLooping.value) {
-    // 在循環模式下，每個實際項目都可以是一個邏輯上的幻燈片起點
-    return actualPlayers.value.length;
-  } else {
-    // 非循環模式下 (項目數 <= itemsPerView)，只有一個 "幻燈片"
-    return 1;
-  }
+// Renamed from totalOriginalSlides to totalLogicalSlides for clarity
+const totalLogicalSlides = computed(() => {
+  if (totalActualItems.value === 0) return 1; // For progress bar, should show 1 segment even if empty
+  return totalActualItems.value; // Each actual item is a potential logical slide
 });
 
-const maxOriginalStartIndex = computed(() => {
-  if (actualPlayers.value.length === 0) return 0;
-  if (isLooping.value) {
-    // 在循環模式下，最後一個邏輯索引是 actualPlayers.length - 1
-    return actualPlayers.value.length - 1;
-  } else {
-    // 非循環模式下，只有索引 0
-    return 0;
-  }
+// Renamed from maxOriginalStartIndex to maxLogicalIndex
+const maxLogicalIndex = computed(() => {
+  return Math.max(0, totalLogicalSlides.value - 1);
 });
 
 // --- 輪播狀態重置 ---
@@ -172,46 +164,61 @@ watch(
   { immediate: true, deep: true }
 );
 
-// 當球員列表長度變化時，確保 logicalCurrentIndex 不會越界
 watch(
-  () => actualPlayers.value.length,
-  (newLength) => {
-    // maxOriginalStartIndex.value 會因為 actualPlayers 的變化而自動更新
-    if (logicalCurrentIndex.value > maxOriginalStartIndex.value) {
-      // 如果當前邏輯索引超出新的最大允許索引，跳轉到新的最後一個有效幻燈片
-      goToSlide(maxOriginalStartIndex.value, false);
+  totalActualItems, // Watch totalActualItems directly
+  (newLength, oldLength) => {
+    // maxLogicalIndex.value will update automatically.
+    if (logicalCurrentIndex.value > maxLogicalIndex.value) {
+      goToSlide(maxLogicalIndex.value, false); // Go to the new last valid slide
     } else if (newLength === 0 && logicalCurrentIndex.value !== 0) {
-      // 如果列表變空，重置到索引 0
-      goToSlide(0, false);
+      goToSlide(0, false); // Reset if list becomes empty
     }
-    // 如果列表從循環變為非循環，並且 displayIndex 不合適，
-    // 上面的 goToSlide(maxOriginalStartIndex.value, false) （此時 maxOriginalStartIndex 為 0）
-    // 會調用 goToSlide(0, false)，這會將 displayIndex 設為 0，從而修正。
+    // If itemsPerView changes or actualPlayers list changes,
+    // resetCarouselState (called from other watchers) or this watcher
+    // will ensure goToSlide is called, which recalculates displayIndex.
   },
-  { immediate: true } // immediate: true 確保在掛載時，如果初始 actualPlayers.length 導致索引問題，會被修正
+  { immediate: true }
 );
 
 // --- 輪播控制函式 ---
 const goToSlide = (targetLogicalIndex, applyTransition = true) => {
-  logicalCurrentIndex.value = Math.min(
-    Math.max(0, targetLogicalIndex),
-    maxOriginalStartIndex.value // 使用更新後的 maxOriginalStartIndex
-  );
+  // Ensure logicalCurrentIndex.value is updated within goToSlide if it's not a wrap-around case
+  if (totalActualItems.value === 0 && targetLogicalIndex !== 0) {
+    logicalCurrentIndex.value = 0; // Force to 0 if empty
+  } else {
+    // This direct update might be redundant if the wrap-around logic below also updates it.
+    // However, for non-wrap-around cases, goToSlide should manage logicalCurrentIndex.
+    logicalCurrentIndex.value = Math.min(
+      Math.max(0, targetLogicalIndex),
+      maxLogicalIndex.value
+    );
+  }
 
   if (!applyTransition) noTransition.value = true;
 
   const offsetToCenter = Math.floor(itemsPerView.value / 2);
 
   if (isLooping.value) {
-    // 循環模式：計算 displayIndex 以便將 logicalCurrentIndex 對應的項目置中
-    // actualPlayers[logicalCurrentIndex.value] 在 clonedAndProcessedPlayers 中的索引是 itemsPerView.value + logicalCurrentIndex.value
+    // Default displayIndex calculation for looping mode, might be overridden by wrap-around logic
     displayIndex.value =
       itemsPerView.value + logicalCurrentIndex.value - offsetToCenter;
   } else {
-    // 非循環模式 (actualPlayers.length <= itemsPerView.value)
-    // logicalCurrentIndex 此時應為 0。
-    // 我們希望從 clonedAndProcessedPlayers (即 actualPlayers) 的開頭顯示。
-    displayIndex.value = 0;
+    // Non-looping mode
+    const targetDisplayIndexIfStartingWithLogical =
+      logicalCurrentIndex.value - offsetToCenter;
+    const minPossibleDisplayIndex = 0;
+    const maxPossibleDisplayIndex = Math.max(
+      0,
+      totalActualItems.value - itemsPerView.value
+    );
+
+    displayIndex.value = Math.max(
+      minPossibleDisplayIndex,
+      Math.min(targetDisplayIndexIfStartingWithLogical, maxPossibleDisplayIndex)
+    );
+    if (totalActualItems.value <= itemsPerView.value) {
+      displayIndex.value = 0;
+    }
   }
 
   if (!applyTransition) {
@@ -222,115 +229,106 @@ const goToSlide = (targetLogicalIndex, applyTransition = true) => {
 };
 
 const nextSlide = () => {
-  if (actualPlayers.value.length === 0) return;
-  if (
-    !isLooping.value &&
-    logicalCurrentIndex.value >= maxOriginalStartIndex.value
-  ) {
-    if (totalOriginalSlides.value <= 1) return;
-    goToSlide(0);
-    return;
-  }
+  if (totalActualItems.value === 0) return;
 
   const oldLogicalIndex = logicalCurrentIndex.value;
-  const newLogicalIndex = (oldLogicalIndex + 1) % totalOriginalSlides.value;
+  const newLogicalIndex =
+    (logicalCurrentIndex.value + 1) % totalActualItems.value;
 
-  logicalCurrentIndex.value = newLogicalIndex;
-  displayIndex.value++; // 視覺上滑動一格
-
-  // 如果是循環播放，且從最後一個邏輯項目換到第一個 (newLogicalIndex === 0)
   if (
     isLooping.value &&
-    oldLogicalIndex === maxOriginalStartIndex.value &&
-    newLogicalIndex === 0 &&
-    totalOriginalSlides.value > 1
+    oldLogicalIndex === maxLogicalIndex.value && // old was last actual item
+    newLogicalIndex === 0 && // new is first actual item
+    totalActualItems.value > 1 // Ensure there's something to loop
   ) {
-    // 使用 transitionend 事件而不是 setTimeout 來確保動畫完成
+    // Wrap around from last to first
+    logicalCurrentIndex.value = newLogicalIndex; // Update logical index immediately
+
+    const offsetToCenter = Math.floor(itemsPerView.value / 2);
+    // Animate to the tail clone of the newLogicalIndex (0)
+    // Tail clone of actual item `newLogicalIndex` is at `clonedAndProcessedPlayers` index:
+    // `itemsPerView.value (head clones) + totalActualItems.value (middle) + newLogicalIndex`
+    const targetClonedItemIndexForAnimation =
+      itemsPerView.value + totalActualItems.value + newLogicalIndex;
+    displayIndex.value = targetClonedItemIndexForAnimation - offsetToCenter;
+    // `noTransition.value` should be false here to allow animation
+
     const transitionEndHandler = () => {
       noTransition.value = true;
-      const offsetToCenter = Math.floor(itemsPerView.value / 2);
-      // 跳轉到 newLogicalIndex (即 0) 對應的正確 displayIndex
-      displayIndex.value =
-        itemsPerView.value + newLogicalIndex - offsetToCenter;
+      // Jump to the displayIndex corresponding to the *original* newLogicalIndex (0)
+      // Original item `newLogicalIndex` is at `clonedAndProcessedPlayers` index:
+      // `itemsPerView.value (head clones) + newLogicalIndex`
+      const targetClonedItemIndexForJump = itemsPerView.value + newLogicalIndex;
+      displayIndex.value = targetClonedItemIndexForJump - offsetToCenter;
 
-      // 確保等待下一幀渲染完成後才重新啟用過渡
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           noTransition.value = false;
         });
       });
-
-      // 移除事件監聽器
-      if (trackRef.value) {
-        trackRef.value.removeEventListener(
-          "transitionend",
-          transitionEndHandler
-        );
-      }
+      // removeEventListener is implicitly handled by { once: true }
     };
-
-    // 添加過渡結束事件監聽器
     if (trackRef.value) {
       trackRef.value.addEventListener("transitionend", transitionEndHandler, {
         once: true,
       });
     }
+  } else {
+    // Normal slide or non-looping
+    goToSlide(newLogicalIndex);
   }
 };
 
 const prevSlide = () => {
-  if (actualPlayers.value.length === 0) return;
-  if (!isLooping.value && logicalCurrentIndex.value <= 0) {
-    if (totalOriginalSlides.value <= 1) return;
-    goToSlide(maxOriginalStartIndex.value);
-    return;
-  }
+  if (totalActualItems.value === 0) return;
 
   const oldLogicalIndex = logicalCurrentIndex.value;
   const newLogicalIndex =
-    (oldLogicalIndex - 1 + totalOriginalSlides.value) %
-    totalOriginalSlides.value;
+    (logicalCurrentIndex.value - 1 + totalActualItems.value) %
+    totalActualItems.value;
 
-  logicalCurrentIndex.value = newLogicalIndex;
-  displayIndex.value--; // 視覺上滑動一格
-
-  // 如果是循環播放，且從第一個邏輯項目換到最後一個
   if (
     isLooping.value &&
-    oldLogicalIndex === 0 &&
-    newLogicalIndex === maxOriginalStartIndex.value &&
-    totalOriginalSlides.value > 1
+    oldLogicalIndex === 0 && // old was first actual item
+    newLogicalIndex === maxLogicalIndex.value && // new is last actual item
+    totalActualItems.value > 1 // Ensure there's something to loop
   ) {
-    // 使用 transitionend 事件而不是 setTimeout 來確保動畫完成
+    // Wrap around from first to last
+    logicalCurrentIndex.value = newLogicalIndex; // Update logical index immediately
+
+    const offsetToCenter = Math.floor(itemsPerView.value / 2);
+    // Animate to the head clone of the newLogicalIndex (maxLogicalIndex)
+    // The head clones are copies of the *last* `itemsPerView.value` actual items.
+    // `actualPlayers[newLogicalIndex]` is `actualPlayers[totalActualItems.value - 1]`.
+    // Its head clone is `headClones[itemsPerView.value - 1]`.
+    // This head clone is at `clonedAndProcessedPlayers` index: `itemsPerView.value - 1`.
+    const targetClonedItemIndexForAnimation = itemsPerView.value - 1;
+    displayIndex.value = targetClonedItemIndexForAnimation - offsetToCenter;
+    // `noTransition.value` should be false here to allow animation
+
     const transitionEndHandler = () => {
       noTransition.value = true;
-      const offsetToCenter = Math.floor(itemsPerView.value / 2);
-      // 跳轉到 newLogicalIndex (即最後一個項目) 對應的正確 displayIndex
-      displayIndex.value =
-        itemsPerView.value + newLogicalIndex - offsetToCenter;
+      // Jump to the displayIndex corresponding to the *original* newLogicalIndex (maxLogicalIndex)
+      // Original item `newLogicalIndex` is at `clonedAndProcessedPlayers` index:
+      // `itemsPerView.value (head clones) + newLogicalIndex`
+      const targetClonedItemIndexForJump = itemsPerView.value + newLogicalIndex;
+      displayIndex.value = targetClonedItemIndexForJump - offsetToCenter;
 
-      // 確保等待下一幀渲染完成後才重新啟用過渡
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           noTransition.value = false;
         });
       });
-
-      // 移除事件監聽器
-      if (trackRef.value) {
-        trackRef.value.removeEventListener(
-          "transitionend",
-          transitionEndHandler
-        );
-      }
+      // removeEventListener is implicitly handled by { once: true }
     };
-
-    // 添加過渡結束事件監聽器
     if (trackRef.value) {
       trackRef.value.addEventListener("transitionend", transitionEndHandler, {
         once: true,
       });
     }
+  } else {
+    // Normal slide or non-looping
+    goToSlide(newLogicalIndex);
   }
 };
 
@@ -373,14 +371,20 @@ const dynamicCarouselItemStyle = computed(() => {
 });
 
 // --- Active/Side 判斷 ---
-// `clonedItemIndex` is the index from v-for over `clonedAndProcessedPlayers`
 const isActive = (clonedItemIndex) => {
-  const isVisible =
-    clonedItemIndex >= displayIndex.value &&
-    clonedItemIndex < displayIndex.value + itemsPerView.value;
-  if (!isVisible) return false;
-  const viewRelativeIndex = clonedItemIndex - displayIndex.value;
-  return viewRelativeIndex === Math.floor(itemsPerView.value / 2);
+  if (isLooping.value) {
+    // 當循環播放時，強調視圖中間的項目
+    const isVisible =
+      clonedItemIndex >= displayIndex.value &&
+      clonedItemIndex < displayIndex.value + itemsPerView.value;
+    if (!isVisible) return false;
+    const viewRelativeIndex = clonedItemIndex - displayIndex.value;
+    return viewRelativeIndex === Math.floor(itemsPerView.value / 2);
+  } else {
+    // 不循環播放時 (項目較少)，強調 logicalCurrentIndex 對應的項目
+    // 在此模式下，clonedAndProcessedPlayers 中的 clonedItemIndex 直接對應 actualPlayers 的索引
+    return clonedItemIndex === logicalCurrentIndex.value;
+  }
 };
 
 // 進度條滑動功能
@@ -390,12 +394,28 @@ const handleProgressDrag = (e) => {
   const x =
     (e.type === "mousedown" ? e.clientX : e.touches[0].clientX) - rect.left;
   const percentage = Math.max(0, Math.min(1, x / rect.width));
-  const numSlidesForProgress = Math.max(1, totalOriginalSlides.value);
+  // Use totalLogicalSlides for progress bar calculation
+  const numSlidesForProgress = Math.max(1, totalLogicalSlides.value);
   let targetIndex = Math.floor(percentage * numSlidesForProgress);
   if (targetIndex >= numSlidesForProgress && numSlidesForProgress > 0) {
     targetIndex = numSlidesForProgress - 1;
   }
   goToSlide(targetIndex);
+};
+
+const handleItemMouseEnter = (clonedItemIndex) => {
+  if (isActive(clonedItemIndex)) {
+    stopAutoplay();
+  }
+};
+
+const handleItemMouseLeave = (clonedItemIndex) => {
+  // 重新啟動輪播的條件可以更寬鬆，
+  // 或者依賴於外層容器的 mouseleave (如果有的話)
+  // 為了簡單起見，這裡只要離開 active item 就嘗試重啟
+  if (isActive(clonedItemIndex)) {
+    startAutoplay();
+  }
 };
 </script>
 
@@ -408,6 +428,7 @@ const handleProgressDrag = (e) => {
         @mouseenter="stopAutoplay"
         @mouseleave="startAutoplay"
         aria-label="上一頁"
+        :disabled="totalActualItems === 0"
       >
         <img src="@/assets/images/left.svg" alt="上一頁" />
       </button>
@@ -423,6 +444,8 @@ const handleProgressDrag = (e) => {
               active: isActive(clonedItemIndex),
               side: !isActive(clonedItemIndex),
             }"
+            @mouseenter="handleItemMouseEnter(clonedItemIndex)"
+            @mouseleave="handleItemMouseLeave(clonedItemIndex)"
           >
             <card v-bind="player" />
           </div>
@@ -435,6 +458,7 @@ const handleProgressDrag = (e) => {
         @mouseenter="stopAutoplay"
         @mouseleave="startAutoplay"
         aria-label="下一頁"
+        :disabled="totalActualItems === 0"
       >
         <img src="@/assets/images/right.svg" alt="下一頁" />
       </button>
@@ -447,18 +471,18 @@ const handleProgressDrag = (e) => {
     >
       <div class="line-segments">
         <button
-          v-for="(_, index) in totalOriginalSlides"
+          v-for="(_, index) in totalLogicalSlides"
           :key="index"
           class="line-segment"
           :class="{
-            active: index === logicalCurrentIndex,
-            passed: index < logicalCurrentIndex,
+            active: index === logicalCurrentIndex && totalActualItems > 0,
+            passed: index < logicalCurrentIndex && totalActualItems > 0,
           }"
           @click="goToSlide(index)"
           :aria-label="`跳到第 ${index + 1} 頁`"
           :style="{
-            left: `${(index / Math.max(1, totalOriginalSlides)) * 100}%`,
-            width: `${100 / Math.max(1, totalOriginalSlides)}%`,
+            left: `${(index / Math.max(1, totalLogicalSlides)) * 100}%`,
+            width: `${100 / Math.max(1, totalLogicalSlides)}%`,
           }"
         ></button>
       </div>

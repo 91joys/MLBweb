@@ -1,12 +1,42 @@
 <template>
   <div class="parent">
     <div class="nav-container">
-      <div class="nav-item featured">所有球員</div>
+      <div
+        class="nav-item"
+        :class="{ featured: selectedItem === '所有球員' }"
+        @click="selectItem('所有球員')"
+      >
+        所有球員
+      </div>
       <div class="separator"></div>
-      <div class="nav-item">投手</div>
-      <div class="nav-item">捕手</div>
-      <div class="nav-item">內野手</div>
-      <div class="nav-item">外野手</div>
+      <div
+        class="nav-item"
+        :class="{ featured: selectedItem === '投手' }"
+        @click="selectItem('投手')"
+      >
+        投手
+      </div>
+      <div
+        class="nav-item"
+        :class="{ featured: selectedItem === '捕手' }"
+        @click="selectItem('捕手')"
+      >
+        捕手
+      </div>
+      <div
+        class="nav-item"
+        :class="{ featured: selectedItem === '內野手' }"
+        @click="selectItem('內野手')"
+      >
+        內野手
+      </div>
+      <div
+        class="nav-item"
+        :class="{ featured: selectedItem === '外野手' }"
+        @click="selectItem('外野手')"
+      >
+        外野手
+      </div>
     </div>
     <div class="ai-button-container">
       <div class="ai-button">
@@ -16,6 +46,21 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from "vue";
+
+const selectedItem = ref("所有球員"); // 預設選取 "所有球員"
+
+// 1. 定義 emits
+const emit = defineEmits(["position-selected"]);
+
+const selectItem = (item) => {
+  selectedItem.value = item;
+  // 2. 當選項改變時，觸發事件並傳遞選中的項目
+  emit("position-selected", item);
+};
+</script>
 
 <style scoped>
 .parent {

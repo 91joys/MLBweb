@@ -1,16 +1,22 @@
 <script setup>
+import { ref } from "vue";
 import Navbar from "@/components/navbar.vue";
 import Carousel from "@/components/Carousel.vue";
+const currentSelectedPosition = ref("所有球員"); // 初始值應與 navbar 的預設值相同
+
+const handlePositionSelected = (position) => {
+  currentSelectedPosition.value = position;
+};
 </script>
 
 <template>
   <div class="container">
     <div class="card-gradient" />
     <header class="selected-position">
-      <Navbar />
+      <Navbar @position-selected="handlePositionSelected" />
     </header>
     <div class="carousel">
-      <Carousel />
+      <Carousel :selected-position="currentSelectedPosition" />
     </div>
   </div>
 </template>
