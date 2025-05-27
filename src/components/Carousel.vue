@@ -26,7 +26,7 @@ const noTransition = ref(false); // To disable transition during silent jumps
 const actualPlayers = computed(() => {
   let playersWithImages = rawPlayersData.map((player) => {
     if (player.Image_URL) {
-      const imageUrl = `/src/assets/images/players/${player.Image_URL}`;
+      const imageUrl = `/images/players/${player.Image_URL}`;
       return { ...player, Image_URL: imageUrl };
     }
     return player;
