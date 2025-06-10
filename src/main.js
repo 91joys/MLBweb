@@ -7,6 +7,7 @@ import Aura from "@primeuix/themes/aura";
 
 import App from "./App.vue";
 import router from "./router";
+import "./firebase/firebase-init";
 
 const app = createApp(App);
 

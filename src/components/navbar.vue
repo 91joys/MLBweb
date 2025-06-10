@@ -38,10 +38,37 @@
         外野手
       </div>
     </div>
-    <div class="ai-button-container">
-      <div class="ai-button">
-        <img class="ai-icon" alt="" src="@/assets/images/chat.svg" />
-        <b class="ai-text">Q.AI</b>
+
+    <div class="right-section">
+      <!-- 使用者選單 -->
+      <div v-if="currentUser" class="user-menu">
+        <div class="user-info" @click="toggleDropdown">
+          <span class="user-name">{{
+            currentUser.displayName || currentUser.email
+          }}</span>
+          <span class="dropdown-arrow">▼</span>
+        </div>
+        <div v-if="showDropdown" class="dropdown">
+          <button @click="goToProfile" class="dropdown-item">
+            <span>個人資料</span>
+          </button>
+          <button @click="handleLogout" class="dropdown-item logout">
+            <span>登出</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 未登入時顯示登入按鈕 -->
+      <div v-else class="auth-buttons">
+        <button @click="goToLogin" class="login-btn">登入</button>
+      </div>
+
+      <!-- AI 按鈕 -->
+      <div class="ai-button-container">
+        <div class="ai-button">
+          <img class="ai-icon" alt="" src="@/assets/images/chat.svg" />
+          <b class="ai-text">Q.AI</b>
+        </div>
       </div>
     </div>
   </div>
@@ -49,17 +76,57 @@
 
 <script setup>
 import { ref } from "vue";
+import { useAuth } from "@/composables/useAuth";
+import { useRouter } from "vue-router";
 
-const selectedItem = ref("所有球員"); // 預設選取 "所有球員"
+const selectedItem = ref("所有球員");
+const showDropdown = ref(false);
 
-// 1. 定義 emits
+// 定義 emits
 const emit = defineEmits(["position-selected"]);
 
 const selectItem = (item) => {
   selectedItem.value = item;
-  // 2. 當選項改變時，觸發事件並傳遞選中的項目
   emit("position-selected", item);
 };
+
+const { currentUser, logout } = useAuth();
+const router = useRouter();
+
+const toggleDropdown = () => {
+  showDropdown.value = !showDropdown.value;
+};
+
+const goToProfile = () => {
+  showDropdown.value = false;
+  router.push("/profile");
+};
+
+const goToLogin = () => {
+  router.push("/login");
+};
+
+const handleLogout = async () => {
+  try {
+    showDropdown.value = false;
+    await logout();
+    router.push("/login");
+  } catch (err) {
+    console.error("登出失敗:", err);
+  }
+};
+
+// 點擊外部關閉下拉選單
+const handleClickOutside = (event) => {
+  if (!event.target.closest(".user-menu")) {
+    showDropdown.value = false;
+  }
+};
+
+// 監聽點擊事件
+if (typeof window !== "undefined") {
+  document.addEventListener("click", handleClickOutside);
+}
 </script>
 
 <style scoped>
@@ -107,6 +174,118 @@ const selectItem = (item) => {
   margin: 0 1rem;
 }
 
+/* 右側區塊 */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 使用者選單樣式 */
+.user-menu {
+  position: relative;
+  z-index: 1000;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.user-info:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.user-name {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-arrow {
+  color: white;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.user-menu:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  background: none;
+  color: #374151;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+  color: #005596;
+}
+
+.dropdown-item.logout:hover {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* 認證按鈕 */
+.auth-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.login-btn {
+  background: #fff;
+  color: #005596;
+  border: 2px solid #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: transparent;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* AI 按鈕樣式 */
 .ai-button-container {
   position: relative;
 }
@@ -156,6 +335,24 @@ const selectItem = (item) => {
   .parent {
     font-size: 28px;
   }
+
+  .right-section {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ai-button {
+    width: 150px;
+    height: 60px;
+  }
+
+  .ai-text {
+    font-size: 24px;
+  }
+
+  .user-name {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -179,18 +376,32 @@ const selectItem = (item) => {
     font-size: 24px;
   }
 
+  .right-section {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
   .ai-button {
-    width: 150px;
-    height: 60px;
+    width: 120px;
+    height: 50px;
   }
 
   .ai-text {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .ai-icon {
     width: 32px;
     height: 32px;
+  }
+
+  .user-name {
+    font-size: 14px;
+    max-width: 100px;
+  }
+
+  .dropdown {
+    min-width: 150px;
   }
 }
 </style>
