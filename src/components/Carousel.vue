@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from "vue";
-import card from "./card.vue";
+import { useAuth } from "@/composables/useAuth";
+import Card from "./Card.vue";
+const { currentUser, isLoggedIn } = useAuth();
 import { useCarouselState } from "@/composables/useCarouselState";
 import { useCarouselData } from "@/composables/useCarouselData";
 import { useCarouselNavigation } from "@/composables/useCarouselNavigation";
@@ -10,6 +12,10 @@ const props = defineProps({
   selectedPosition: {
     type: String,
     default: "所有球員",
+  },
+  userId: {
+    type: String,
+    default: "anonymous",
   },
 });
 
@@ -206,7 +212,11 @@ watch(
             @mouseenter="isActive(clonedItemIndex) && stopAutoplay()"
             @mouseleave="isActive(clonedItemIndex) && startAutoplay()"
           >
-            <card v-bind="player" />
+            <Card
+              v-bind="player"
+              :user-email="currentUser?.email || ''"
+              :is-logged-in="isLoggedIn"
+            />
           </div>
         </div>
       </div>

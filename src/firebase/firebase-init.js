@@ -1,16 +1,17 @@
 // src/firebase/firebase-init.js
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDhRo41R7lPJn9ygsnw2Mo_gw5yMQlaacI",
-  authDomain: "mlb-web-a67a3.firebaseapp.com",
-  projectId: "mlb-web-a67a3",
-  storageBucket: "mlb-web-a67a3.firebasestorage.app",
-  messagingSenderId: "18880880524",
-  appId: "1:18880880524:web:d422e98058d09e17c2c0a9",
-  measurementId: "G-PS3QR31GGJ",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // 初始化 Firebase
@@ -19,5 +20,6 @@ const app = initializeApp(firebaseConfig);
 // Firebase 各服務
 const auth = getAuth(app);
 const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
-export { auth, analytics };
+export { auth, analytics, db };

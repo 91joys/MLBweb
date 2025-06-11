@@ -41,17 +41,5 @@ const handlePositionSelected = (position) => {
 
 .carousel {
   position: relative;
-  /* width: 100%;
-  max-width: 1920px;
-  min-width: 1200px;
-  height: 500px;
-  margin-top: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  box-sizing: border-box; */
 }
 </style>

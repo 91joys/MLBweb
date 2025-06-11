@@ -43,17 +43,22 @@
       <!-- 使用者選單 -->
       <div v-if="currentUser" class="user-menu">
         <div class="user-info" @click="toggleDropdown">
-          <span class="user-name">{{
-            currentUser.displayName || currentUser.email
-          }}</span>
+          <span class="user-name">
+            {{ currentUser.displayName || currentUser.email }}
+            <span v-if="currentUser.isGuest" class="guest-badge">訪客</span>
+          </span>
           <span class="dropdown-arrow">▼</span>
         </div>
         <div v-if="showDropdown" class="dropdown">
-          <button @click="goToProfile" class="dropdown-item">
+          <button
+            v-if="!currentUser.isGuest"
+            @click="goToProfile"
+            class="dropdown-item"
+          >
             <span>個人資料</span>
           </button>
           <button @click="handleLogout" class="dropdown-item logout">
-            <span>登出</span>
+            <span>{{ currentUser.isGuest ? '結束訪問' : '登出' }}</span>
           </button>
         </div>
       </div>
@@ -403,5 +408,14 @@ if (typeof window !== "undefined") {
   .dropdown {
     min-width: 150px;
   }
+}
+
+.guest-badge {
+  background: #f59e0b;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
 }
 </style>

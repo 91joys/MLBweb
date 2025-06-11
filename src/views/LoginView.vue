@@ -21,6 +21,22 @@ const handleLogin = async () => {
 const goToRegister = () => {
   router.push("/register");
 };
+
+// 新增：匿名訪客登入
+const handleGuestLogin = () => {
+  // 創建匿名用戶資訊
+  const guestUser = {
+    email: "guest@visitor.com",
+    displayName: "匿名訪客",
+    isGuest: true
+  };
+  
+  // 將訪客資訊存到 localStorage
+  localStorage.setItem('guestUser', JSON.stringify(guestUser));
+  
+  // 直接導向卡片頁面
+  router.push("/card");
+};
 </script>
 
 <template>
@@ -56,6 +72,20 @@ const goToRegister = () => {
 
         <button type="submit" class="login-btn">登入</button>
       </form>
+
+      <!-- 新增：匿名訪客按鈕 -->
+      <div class="guest-section">
+        <div class="divider">
+          <span>或</span>
+        </div>
+        <button @click="handleGuestLogin" class="guest-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          以匿名訪客身分瀏覽
+        </button>
+      </div>
 
       <div v-if="errorMessage" class="error-message">
         <p>{{ errorMessage }}</p>
@@ -171,6 +201,62 @@ const goToRegister = () => {
 }
 
 .login-btn:active {
+  transform: translateY(0);
+}
+
+/* 新增：匿名訪客區塊樣式 */
+.guest-section {
+  margin-top: 24px;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider span {
+  background: white;
+  color: #9ca3af;
+  padding: 0 16px;
+  font-size: 14px;
+  position: relative;
+}
+
+.guest-btn {
+  background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.guest-btn:hover {
+  background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.4);
+}
+
+.guest-btn:active {
   transform: translateY(0);
 }
 
