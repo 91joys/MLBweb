@@ -1,12 +1,17 @@
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, watch } from "vue"; // 移除了 onMounted 和 toRef
 import { doc, getDoc, updateDoc, increment, setDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebase-init";
 
-export function useLikeSystem(playerId, userEmail = "", isLoggedIn = false) {
+export function useLikeSystem(playerIdArg, userEmailArg, isLoggedInArg) {
   const isLiked = ref(false);
   const likeCount = ref(0);
   const loading = ref(false);
   const error = ref(null);
+
+  // 假設傳入的參數 playerIdArg, userEmailArg, isLoggedInArg 已經是 ref
+  const playerIdRef = playerIdArg;
+  const userEmailRef = userEmailArg;
+  const isLoggedInRef = isLoggedInArg;
 
   const likeIconSrc = computed(() => {
     return isLiked.value
@@ -16,14 +21,14 @@ export function useLikeSystem(playerId, userEmail = "", isLoggedIn = false) {
 
   // 初始化載入按讚狀態
   async function loadLikeData() {
-    if (!playerId) return;
+    if (!playerIdRef.value) return;
 
     loading.value = true;
     error.value = null;
 
     try {
       // 載入球員的按讚總數
-      const playerDocRef = doc(db, "players", playerId);
+      const playerDocRef = doc(db, "players", playerIdRef.value);
       const playerDoc = await getDoc(playerDocRef);
 
       if (playerDoc.exists()) {
@@ -31,10 +36,14 @@ export function useLikeSystem(playerId, userEmail = "", isLoggedIn = false) {
       }
 
       // 只有登入用戶才載入按讚狀態
-      if (isLoggedIn && userEmail) {
+      if (isLoggedInRef.value && userEmailRef.value) {
         // 使用 email 作為識別，創建安全的文檔 ID
-        const safeEmail = userEmail.replace(/[.#$\[\]]/g, "_");
-        const userLikeDocRef = doc(db, "userLikes", `${safeEmail}_${playerId}`);
+        const safeEmail = userEmailRef.value.replace(/[.#$\[\]]/g, "_");
+        const userLikeDocRef = doc(
+          db,
+          "userLikes",
+          `${safeEmail}_${playerIdRef.value}`
+        );
         const userLikeDoc = await getDoc(userLikeDocRef);
 
         if (userLikeDoc.exists()) {
@@ -54,14 +63,20 @@ export function useLikeSystem(playerId, userEmail = "", isLoggedIn = false) {
 
   // 切換按讚狀態
   async function toggleLike() {
+    console.log("toggleLike 函數中的狀態檢查:", {
+      isLoggedIn: isLoggedInRef.value,
+      userEmail: userEmailRef.value,
+      playerId: playerIdRef.value,
+    });
+
     // 檢查是否為登入用戶
-    if (!isLoggedIn || !userEmail) {
+    if (!isLoggedInRef.value || !userEmailRef.value) {
       error.value = "請先登入才能按讚";
       console.warn("用戶未登入或缺少 email，無法按讚");
       return;
     }
 
-    if (!playerId || loading.value) return;
+    if (!playerIdRef.value || loading.value) return;
 
     loading.value = true;
     error.value = null;
@@ -70,25 +85,29 @@ export function useLikeSystem(playerId, userEmail = "", isLoggedIn = false) {
 
     try {
       // 使用 email 作為識別，創建安全的文檔 ID
-      const safeEmail = userEmail.replace(/[.#$\[\]]/g, "_");
+      const safeEmail = userEmailRef.value.replace(/[.#$\[\]]/g, "_");
 
       // 更新球員的按讚總數
-      const playerDocRef = doc(db, "players", playerId);
+      const playerDocRef = doc(db, "players", playerIdRef.value);
       await updateDoc(playerDocRef, {
         likeCount: increment(increment_value),
       }).catch(async () => {
         // 如果文檔不存在，創建新文檔
         await setDoc(playerDocRef, {
           likeCount: Math.max(0, increment_value),
-          playerId: playerId,
+          playerId: playerIdRef.value,
         });
       });
 
       // 更新用戶的按讚狀態
-      const userLikeDocRef = doc(db, "userLikes", `${safeEmail}_${playerId}`);
+      const userLikeDocRef = doc(
+        db,
+        "userLikes",
+        `${safeEmail}_${playerIdRef.value}`
+      );
       await setDoc(userLikeDocRef, {
-        userEmail: userEmail,
-        playerId: playerId,
+        userEmail: userEmailRef.value,
+        playerId: playerIdRef.value,
         isLiked: newLikedState,
         timestamp: new Date(),
       });
@@ -107,7 +126,7 @@ export function useLikeSystem(playerId, userEmail = "", isLoggedIn = false) {
 
   // 監聽登入狀態和 email 變化，重新載入數據
   watch(
-    [() => isLoggedIn, () => userEmail, () => playerId],
+    [isLoggedInRef, userEmailRef, playerIdRef],
     () => {
       loadLikeData();
     },

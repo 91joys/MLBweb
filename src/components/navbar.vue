@@ -58,7 +58,7 @@
             <span>個人資料</span>
           </button>
           <button @click="handleLogout" class="dropdown-item logout">
-            <span>{{ currentUser.isGuest ? '結束訪問' : '登出' }}</span>
+            <span>{{ currentUser.isGuest ? "結束訪問" : "登出" }}</span>
           </button>
         </div>
       </div>

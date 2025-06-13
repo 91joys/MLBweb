@@ -34,7 +34,7 @@ export function useCarouselData(props, itemsPerView, isLooping = null) {
       }_${index}_${Math.random()}`,
     });
 
-    if (!isLooping || numPlayers === 0) {
+    if (!isLooping || numPlayers === 0 || numPlayers <= itemsPerView.value) {
       return players.map((player, index) =>
         addUniqueKey(player, "orig", index)
       );

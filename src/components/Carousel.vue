@@ -22,9 +22,12 @@ const props = defineProps({
 // Refs
 const trackRef = ref(null);
 const itemWidth = ref(0);
-const itemsPerView = ref(3); // 預設每次顯示的項目數量
+const itemsPerView = ref(3);
 const gap = 20;
 const transitionDurationMs = 700;
+
+// 追蹤評論彈窗狀態
+const activeCommentModals = ref(new Set());
 
 // Composables
 const { actualPlayers } = useCarouselData(props, itemsPerView);
@@ -38,7 +41,22 @@ const { goToSlide, nextSlide, prevSlide } = useCarouselNavigation(
   state,
   trackRef
 );
-const { startAutoplay, stopAutoplay } = useAutoplay(nextSlide);
+const { startAutoplay, stopAutoplay, blockAutoplay, unblockAutoplay } =
+  useAutoplay(nextSlide);
+
+// 處理評論彈窗狀態
+const handleCommentModalOpen = (playerId) => {
+  activeCommentModals.value.add(playerId);
+  blockAutoplay(); // 使用新的阻止方法
+};
+
+const handleCommentModalClose = (playerId) => {
+  activeCommentModals.value.delete(playerId);
+  // 只有當沒有任何評論彈窗開啟時才重新開始自動播放
+  if (activeCommentModals.value.size === 0) {
+    unblockAutoplay(); // 使用新的解除阻止方法
+  }
+};
 
 // 計算項目寬度
 const calculateItemWidth = () => {
@@ -110,7 +128,6 @@ const dynamicCarouselItemStyle = computed(() => {
   if (itemWidth.value <= 0) return { width: "0px" };
   return {
     width: `${itemWidth.value}px`,
-    // 統一的動畫控制
     transition: state.noTransition.value
       ? "none"
       : `transform ${transitionDurationMs / 1000}s ease, opacity ${
@@ -191,7 +208,7 @@ watch(
         class="nav-btn prev-btn"
         @click="prevSlide"
         @mouseenter="stopAutoplay"
-        @mouseleave="startAutoplay"
+        @mouseleave="activeCommentModals.size === 0 && startAutoplay()"
         aria-label="上一頁"
         :disabled="state.totalActualItems.value === 0"
       >
@@ -210,12 +227,18 @@ watch(
               side: !isActive(clonedItemIndex),
             }"
             @mouseenter="isActive(clonedItemIndex) && stopAutoplay()"
-            @mouseleave="isActive(clonedItemIndex) && startAutoplay()"
+            @mouseleave="
+              isActive(clonedItemIndex) &&
+                activeCommentModals.size === 0 &&
+                startAutoplay()
+            "
           >
             <Card
               v-bind="player"
               :user-email="currentUser?.email || ''"
               :is-logged-in="isLoggedIn"
+              @comment-modal-open="handleCommentModalOpen"
+              @comment-modal-close="handleCommentModalClose"
             />
           </div>
         </div>
@@ -225,7 +248,7 @@ watch(
         class="nav-btn next-btn"
         @click="nextSlide"
         @mouseenter="stopAutoplay"
-        @mouseleave="startAutoplay"
+        @mouseleave="activeCommentModals.size === 0 && startAutoplay()"
         aria-label="下一頁"
         :disabled="state.totalActualItems.value === 0"
       >

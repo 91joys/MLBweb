@@ -54,9 +54,24 @@ const backgroundInfo = computed(() =>
     { label: "道奇隊初登板", value: props.Dodgers_Debut },
   ].filter((item) => item.value)
 );
-const emit = defineEmits(["user-login"]);
+
+// Emit 事件定義
+const emit = defineEmits([
+  "user-login",
+  "comment-modal-open",
+  "comment-modal-close",
+]);
+
 const handleUserLogin = () => {
   emit("user-login");
+};
+
+const handleCommentModalOpen = (playerId) => {
+  emit("comment-modal-open", playerId);
+};
+
+const handleCommentModalClose = (playerId) => {
+  emit("comment-modal-close", playerId);
 };
 </script>
 
@@ -90,6 +105,8 @@ const handleUserLogin = () => {
       @toggle-rating="toggleRatingSelector"
       @rate="handleRate"
       @hover-rating="(rating) => (hoverRating = rating)"
+      @comment-modal-open="handleCommentModalOpen"
+      @comment-modal-close="handleCommentModalClose"
     />
   </div>
 </template>
