@@ -14,11 +14,6 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/main",
-      name: "main",
-      component: () => import("../views/MainView.vue"),
-    },
-    {
       path: "/card",
       name: "card",
       component: CardIntro,
