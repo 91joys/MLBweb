@@ -70,12 +70,18 @@
 
       <!-- AI 按鈕 -->
       <div class="ai-button-container">
-        <div class="ai-button">
+        <div class="ai-button" @click="openChat">
           <img class="ai-icon" alt="" src="@/assets/images/chat.svg" />
           <b class="ai-text">Q.AI</b>
         </div>
       </div>
     </div>
+
+    <!-- AI 聊天模態框 -->
+    <AIChatModal 
+      :is-open="showChatModal" 
+      @close="closeChatModal" 
+    />
   </div>
 </template>
 
@@ -83,9 +89,11 @@
 import { ref } from "vue";
 import { useAuth } from "@/composables/useAuth";
 import { useRouter } from "vue-router";
+import AIChatModal from './AIChatModal.vue'
 
 const selectedItem = ref("所有球員");
 const showDropdown = ref(false);
+const showChatModal = ref(false)
 
 // 定義 emits
 const emit = defineEmits(["position-selected"]);
@@ -120,6 +128,15 @@ const handleLogout = async () => {
     console.error("登出失敗:", err);
   }
 };
+
+// AI 聊天功能
+const openChat = () => {
+  showChatModal.value = true
+}
+
+const closeChatModal = () => {
+  showChatModal.value = false
+}
 
 // 點擊外部關閉下拉選單
 const handleClickOutside = (event) => {
